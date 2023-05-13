@@ -1,0 +1,9 @@
+<div class="table-with-buttons">
+  <fixtab-table [columns]="columns" [values]="travels" tableName="Przewozy"
+    [showTableName]="true" (selected)="onTravelSelected($event)"></fixtab-table>
+  <fixtab-table-buttons (addActionEmit)="openTravelDialog($event)"
+    (editActionEmit)="openTravelDialog($event)" (deleteActionEmit)="openTravelDeleteDialog($event)" [isSelectedItem]="selectedTravel !== null"></fixtab-table-buttons>
+</div>
+
+<fixtab-delete-dialog *ngIf="openDeleteDialog" (deleteConfirmationEmit)="handleTravelDeleteDialog($event)"></fixtab-delete-dialog>
+
