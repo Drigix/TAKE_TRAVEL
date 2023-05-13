@@ -43,10 +43,15 @@ export class BussDialogComponent implements OnInit {
 
   onCreateBus(): void {
     this.busService.create(this.bus).subscribe(
-      (res: HttpResponse<BusPassword>) => {
-        this.password = res.body;
-        this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
+      {
+        next: () => {
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
               detail: 'utworzono!'});
+        },
+        error: () => {
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+              detail: 'nie utworzono!'});
+        }
       }
     );
   }

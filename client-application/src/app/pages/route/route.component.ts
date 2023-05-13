@@ -27,6 +27,7 @@ export class RoutesComponent implements OnInit {
 
   ngOnInit() {
     this.loadColumns();
+    this.loadRoutes();
   }
 
   loadColumns(): void {
@@ -41,11 +42,11 @@ export class RoutesComponent implements OnInit {
       },
       {
         header: 'Punkt docelowy',
-        field: 'endingPoint'
+        field: 'endPoint'
       },
       {
         header: 'Odległość',
-        field: 'km'
+        field: 'distance'
       }
     ];
   }

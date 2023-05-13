@@ -16,7 +16,7 @@ export class ClientsService {
   ) { }
 
   getAll(): Observable<EntityArrayResponseType> {
-    return this.http.get<Client[]>(this.url + '/getAllClients', {observe: 'response'});
+    return this.http.get<Client[]>(this.url, {observe: 'response'});
   }
 
   getAllNotDeleted(): Observable<EntityArrayResponseType> {
@@ -24,14 +24,14 @@ export class ClientsService {
   }
 
   create(client: Client): Observable<HttpResponse<void>> {
-    return this.http.post<HttpResponse<void>>(this.url + '/createClient', client);
+    return this.http.post<HttpResponse<void>>(this.url, client);
   }
 
   update(client: Client): Observable<HttpResponse<void>> {
-    return this.http.put<HttpResponse<void>>(this.url + '/editClient', client);
+    return this.http.put<HttpResponse<void>>(this.url, client);
   }
 
   delete(clientId: number): Observable<HttpResponse<void>> {
-    return this.http.delete<HttpResponse<void>>(`${this.url}/deleteClient/${clientId}`);
+    return this.http.delete<HttpResponse<void>>(`${this.url}/${clientId}`);
   }
 }

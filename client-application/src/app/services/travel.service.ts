@@ -9,14 +9,14 @@ export type EntityArrayResponseType = HttpResponse<Travel[]>;
 @Injectable({providedIn: 'root'})
 export class TravelService {
 
-  private url = API_URL + 'travel'
+  private url = API_URL + 'transport'
 
   constructor(
     private http: HttpClient
   ) { }
 
   getAll(): Observable<EntityArrayResponseType> {
-    return this.http.get<Travel[]>(this.url + '/getAllTravel', {observe: 'response'});
+    return this.http.get<Travel[]>(this.url, {observe: 'response'});
   }
 
   getAllNotDeleted(): Observable<EntityArrayResponseType> {
@@ -24,14 +24,14 @@ export class TravelService {
   }
 
   create(travel: Travel): Observable<HttpResponse<void>> {
-    return this.http.post<HttpResponse<void>>(this.url + '/createTravel', travel);
+    return this.http.post<HttpResponse<void>>(this.url, travel);
   }
 
   update(travel: Travel): Observable<HttpResponse<void>> {
-    return this.http.put<HttpResponse<void>>(this.url + '/editTravel', travel);
+    return this.http.put<HttpResponse<void>>(this.url, travel);
   }
 
   delete(travelId: number): Observable<HttpResponse<void>> {
-    return this.http.delete<HttpResponse<void>>(`${this.url}/deleteTravel/${travelId}`);
+    return this.http.delete<HttpResponse<void>>(`${this.url}/${travelId}`);
   }
 }

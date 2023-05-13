@@ -12,14 +12,14 @@ export type BusPasswordResponseType = HttpResponse<BusPassword>;
 @Injectable({providedIn: 'root'})
 export class BusService {
 
-  private url = API_URL + 'buss'
+  private url = API_URL + 'bus'
 
   constructor(
     private http: HttpClient
   ) { }
 
   getAll(): Observable<EntityArrayResponseType> {
-    return this.http.get<Bus[]>(this.url + '/getAllBuss', {observe: 'response'});
+    return this.http.get<Bus[]>(this.url, {observe: 'response'});
   }
 
   getAllNotDeleted(): Observable<EntityArrayResponseType> {
@@ -27,7 +27,7 @@ export class BusService {
   }
 
   create(bus: Bus): Observable<BusPasswordResponseType> {
-    return this.http.post<BusPassword>(this.url + '/createBus', bus, {observe: 'response'});
+    return this.http.post<BusPassword>(this.url, bus, {observe: 'response'});
   }
 
   changePassword(password: BusPassword): Observable<HttpResponse<void>> {
@@ -35,12 +35,12 @@ export class BusService {
   }
 
   edit(bus: Bus): Observable<EntityResponseType> {
-    return this.http.put<Bus>(this.url + '/editBus', bus, {observe: 'response'});
+    return this.http.put<Bus>(this.url, bus, {observe: 'response'});
   }
 
 
   delete(busId: number): Observable<HttpResponse<void>> {
-    return this.http.delete<void>(`${this.url}/deleteBus/${busId}`, {observe: 'response'});
+    return this.http.delete<void>(`${this.url}/${busId}`, {observe: 'response'});
   }
 
 }

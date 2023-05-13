@@ -43,12 +43,12 @@ export class RouteDialogComponent implements OnInit {
     this.routeService.update(this.route).subscribe(
       {
         next: (response) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
                 detail: 'edytowano!'});
           this.ref.close(response);
         },
         error: (error) => {
-          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
                 detail: 'nie edytowano!'});
         }
       }
@@ -59,13 +59,13 @@ export class RouteDialogComponent implements OnInit {
     this.routeService.create(this.route).subscribe(
       {
         next: (response) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
                 detail: 'utworzono!'});
           this.ref.close(response);
         },
         error: (error) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-                detail: 'utworzono!'});
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+                detail: 'nie utworzono!'});
         }
       }
     )

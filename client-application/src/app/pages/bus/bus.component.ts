@@ -27,7 +27,7 @@ export class BusComponent implements OnInit {
 
   ngOnInit() {
     this.loadColums();
-    this.loadBuss();
+    this.loadBuses();
    }
 
    loadColums(): void {
@@ -47,8 +47,8 @@ export class BusComponent implements OnInit {
     ];
    }
 
-   loadBuss(): void {
-      this.busService.getAllNotDeleted().subscribe(
+   loadBuses(): void {
+      this.busService.getAll().subscribe(
         (res: HttpResponse<Bus[]>) => {
           this.buses = res.body ?? [];
         }
@@ -57,7 +57,6 @@ export class BusComponent implements OnInit {
 
    onBusSelected(event: Bus): void {
       this.selectedBus = event;
-      console.log(this.selectedBus);
    }
 
    openBussDialog(edit: boolean): void {
@@ -83,12 +82,12 @@ export class BusComponent implements OnInit {
 
    handleBussDeleteDialog(response: boolean): void {
     if(response) {
-      this.busService.delete(this.selectedBus?.BusId!).subscribe(
+      this.busService.delete(this.selectedBus?.id!).subscribe(
         {
           next: () => {
             this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
               detail: 'usunięto!'});
-            this.loadBuss();
+            this.loadBuses();
           },
           error: () => {
             this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',

@@ -18,7 +18,6 @@ import { UntypedFormBuilder } from '@angular/forms';
 import { TokenInterceptor } from './config/token-interceptor.service';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 
 const TRANSLATION_FILES = [
   'global'
@@ -29,8 +28,6 @@ export function HttpLoaderFactory(http: HttpClient, backend: HttpBackend) {
     prefix: `../assets/i18n/pl/${file}`,
     suffix: '.json'
   }));
-
-  return new MultiTranslateHttpLoader(backend, translationResources);
 }
 
 @NgModule({

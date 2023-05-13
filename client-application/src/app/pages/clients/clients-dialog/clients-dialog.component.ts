@@ -50,12 +50,12 @@ export class ClientsDialogComponent implements OnInit {
     this.clientService.update(this.client).subscribe(
       {
         next: (response) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces',
                 detail: 'edytowano!'});
           this.ref.close(response);
         },
         error: (error) => {
-          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
                 detail: 'nie edytowano!'});
         }
       }
@@ -68,13 +68,13 @@ export class ClientsDialogComponent implements OnInit {
     this.clientService.create(this.client).subscribe(
       {
         next: (response) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
                 detail: 'utworzono!'});
           this.ref.close(response);
         },
         error: (error) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-                detail: 'utworzono!'});
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+                detail: 'nie utworzono!'});
         }
       }
     )

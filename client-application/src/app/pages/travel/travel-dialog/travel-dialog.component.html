@@ -1,33 +1,21 @@
 <div class="dialog-content">
   <div class="dialog-body">
     <form #form="ngForm" [formGroup]="travelForm" class="dialog-form">
-      <!-- <span class="p-float-label">
-        <input pInputText id="name" formControlName="name" placeholder="Imie" [(ngModel)]="client.name" />
+      <span class="p-float-label">
+        <input pInputText id="name" formControlName="name" placeholder="Nazwa przewozu" [(ngModel)]="travel.name" />
       </span>
       <span class="p-float-label">
-        <input pInputText id="surname" formControlName="surname" placeholder="Nazwisko" [(ngModel)]="client.surname" />
+        <p-calendar formControlName="birthDay" dateFormat="dd-mm-yy" [(ngModel)]="date" appendTo="body" placeholder="Data przewozu"></p-calendar>
       </span>
       <span class="p-float-label">
-        <input pInputText id="email" formControlName="email" placeholder="Email" [(ngModel)]="client.email" />
+        <p-multiSelect [options]="clients" [(ngModel)]="selectedClients" optionLabel="lastName" placeholder="Klienci" appendTo="body"></p-multiSelect>
       </span>
       <span class="p-float-label">
-        <p-calendar formControlName="birthDay" dateFormat="dd-mm-yy" [(ngModel)]="clientBirthDate" appendTo="body" placeholder="Data urodzenia"></p-calendar>
+        <p-multiSelect [options]="buses" [(ngModel)]="selectedBuses" optionLabel="name" placeholder="Autobusy" appendTo="body"></p-multiSelect>
       </span>
       <span class="p-float-label">
-        <input pInputText id="phoneNumber" formControlName="phoneNumber" placeholder="Numer telefonu" [(ngModel)]="client.phoneNumber" maxlength="11"/>
+        <p-dropdown [options]="routes" [(ngModel)]="travel.route" optionalLabel="name" placeholder="Trasa" appendTo="body"></p-dropdown>
       </span>
-      <span class="p-float-label">
-        <input pInputText id="city" formControlName="city" placeholder="Miasto" [(ngModel)]="address.city" />
-      </span>
-      <span class="p-float-label">
-        <input pInputText id="postalCode" formControlName="postalCode" placeholder="Kod pocztowy" [(ngModel)]="address.postCode" />
-      </span>
-      <span class="p-float-label">
-        <input pInputText id="street" formControlName="street" placeholder="Ulica" [(ngModel)]="address.street" />
-      </span>
-      <span class="p-float-label">
-        <input pInputText id="streetNumber" formControlName="streetNumber" placeholder="Numer domu" [(ngModel)]="address.streetNumber" />
-      </span> -->
     </form>
   </div>
   <div class="dialog-footer">

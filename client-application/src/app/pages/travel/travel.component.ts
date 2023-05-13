@@ -28,6 +28,7 @@ export class TravelComponent implements OnInit {
 
   ngOnInit() {
     this.loadColumns();
+    this.loadTravels();
   }
 
   loadColumns(): void {
@@ -42,7 +43,8 @@ export class TravelComponent implements OnInit {
       },
       {
         header: 'Trasa',
-        field: 'route'
+        field: 'route',
+        subField: 'name'
       }
     ];
   }
@@ -78,7 +80,7 @@ export class TravelComponent implements OnInit {
 
   handleTravelDeleteDialog(response: boolean): void {
     if(response) {
-      this.routeService.delete(this.selectedTravel?.travelId!).subscribe(
+      this.routeService.delete(this.selectedTravel?.id!).subscribe(
         {
           next: () => {
             this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',

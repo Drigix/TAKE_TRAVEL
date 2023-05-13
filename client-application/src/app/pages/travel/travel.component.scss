@@ -1,0 +1,23 @@
+:host ::ng-deep .p-multiselect-panel .p-multiselect-header .p-checkbox {
+  display: none;
+}
+
+:host ::ng-deep .p-dropdown {
+  width: 230px;
+  height: 40px;
+  text-align: left !important;
+}
+
+:host ::ng-deep .p-multiselect {
+  width: 230px;
+  height: 40px;
+  text-align: left !important;
+}
+
+:host ::ng-deep .p-dropdown input {
+  display: none;
+}
+
+:host ::ng-deep .p-multiselect input {
+  display: none;
+}

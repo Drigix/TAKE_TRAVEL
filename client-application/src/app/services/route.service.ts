@@ -16,7 +16,7 @@ export class RouteService {
   ) { }
 
   getAll(): Observable<EntityArrayResponseType> {
-    return this.http.get<TravelRoute[]>(this.url + '/getAllRoute', {observe: 'response'});
+    return this.http.get<TravelRoute[]>(this.url, {observe: 'response'});
   }
 
   getAllNotDeleted(): Observable<EntityArrayResponseType> {
@@ -24,14 +24,14 @@ export class RouteService {
   }
 
   create(route: TravelRoute): Observable<HttpResponse<void>> {
-    return this.http.post<HttpResponse<void>>(this.url + '/createRoute', route);
+    return this.http.post<HttpResponse<void>>(this.url, route);
   }
 
   update(route: TravelRoute): Observable<HttpResponse<void>> {
-    return this.http.put<HttpResponse<void>>(this.url + '/editRoute', route);
+    return this.http.put<HttpResponse<void>>(this.url, route);
   }
 
   delete(routeId: number): Observable<HttpResponse<void>> {
-    return this.http.delete<HttpResponse<void>>(`${this.url}/deleteRoute/${routeId}`);
+    return this.http.delete<HttpResponse<void>>(`${this.url}/${routeId}`);
   }
 }

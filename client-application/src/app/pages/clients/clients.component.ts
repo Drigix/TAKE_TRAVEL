@@ -34,25 +34,25 @@ export class ClientsComponent implements OnInit {
     this.columns = [
       {
         header: 'Imie',
-        field: 'name'
+        field: 'firstName'
       },
       {
         header: 'Nazwisko',
-        field: 'surname'
+        field: 'lastName'
       },
       {
-        header: 'Email',
-        field: 'email'
+        header: 'Data urodzenia',
+        field: 'birthDate'
       },
       {
-        header: 'Telefon',
-        field: 'phoneNumber'
+        header: 'Pesel',
+        field: 'pesel'
       }
     ];
   }
 
    loadClients(): void {
-    this.clientService.getAllNotDeleted().subscribe(
+    this.clientService.getAll().subscribe(
       (res: HttpResponse<Client[]>) => {
         this.clients = res.body ?? [];
       }
