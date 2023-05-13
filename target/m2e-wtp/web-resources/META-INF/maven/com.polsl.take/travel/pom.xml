@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.polsl.take</groupId>
+    <artifactId>travel</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>2.0.1</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.26</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		     <artifactId>jaxb-api</artifactId>
+		    <version>2.3.0</version>
+		 </dependency>
+		 
+	    <dependency>
+	        <groupId>org.postgresql</groupId>
+	        <artifactId>postgresql</artifactId>
+	        <version>42.2.5</version>
+	    </dependency>
+
+       	<dependency>
+	        <groupId>org.hibernate</groupId>
+	        <artifactId>hibernate-core</artifactId>
+	        <version>5.3.7.Final</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.hibernate</groupId>
+	        <artifactId>hibernate-entitymanager</artifactId>
+	        <version>5.3.7.Final</version>
+	    </dependency>
+       
+       
+		    <dependency>
+		        <groupId>org.slf4j</groupId>
+		        <artifactId>slf4j-api</artifactId>
+		        <version>1.7.25</version>
+		    </dependency>
+	    
+		<dependency>
+		    <groupId>com.sun.activation</groupId>
+		    <artifactId>javax.activation</artifactId>
+		    <version>1.2.0</version>
+		</dependency>	    
+	   
+        <!-- 
+        
+
+		
+		 -->
+		 
+		 <dependency>
+		    <groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-servlet</artifactId>
+		    <version>2.25.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.spec.javax.ejb</groupId>
+		    <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+		    <version>1.0.2.Final</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.spec.javax.annotation</groupId>
+		    <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+		    <version>1.0.1.Final</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+		    <artifactId>jackson-jaxrs-json-provider</artifactId>
+		    <version>2.14.0</version>
+		</dependency>
+
+		 
+    </dependencies>
+    <build>
+        <finalName>travel</finalName>
+        <plugins>
+		    <plugin>
+		      <groupId>org.apache.openejb.maven</groupId>
+		      <artifactId>tomee-maven-plugin</artifactId>
+		      <version>1.7.1</version>
+		      <configuration>
+		        <tomeeVersion>1.7.1</tomeeVersion>
+		        <tomeeClassifier>plus</tomeeClassifier>
+		      </configuration>
+		    </plugin>
+		</plugins>
+    </build>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+    
+    
+</project>

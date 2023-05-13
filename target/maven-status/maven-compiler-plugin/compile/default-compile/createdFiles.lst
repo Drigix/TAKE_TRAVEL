@@ -1,0 +1,15 @@
+com\airhack\models\Book.class
+com\airhack\services\RouteEJB.class
+com\airhacks\endpoints\TransportREST.class
+com\airhack\models\Bus.class
+com\airhacks\endpoints\BusREST.class
+com\airhacks\JAXRSConfiguration.class
+com\airhack\services\BusEJB.class
+com\airhack\services\TransportEJB.class
+com\airhacks\endpoints\RouteREST.class
+com\airhacks\ping\boundary\PingResource.class
+com\airhack\models\Client.class
+com\airhack\models\Transport.class
+com\airhack\services\ClientEJB.class
+com\airhack\models\Route.class
+com\airhacks\endpoints\ClientREST.class
