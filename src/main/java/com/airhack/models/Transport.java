@@ -1,7 +1,9 @@
 package com.airhack.models;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,19 +11,78 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="transport")
+@Getter
+@Setter
 public class Transport {
 	@Id
 	@GeneratedValue
 	private Integer id;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="date")
+	private Date date;
+		
+	@OneToMany
 	private List<Client> clients;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany
 	private List<Bus> buses;
 	
 	@OneToOne
 	private Route route;
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public String getName()	{
+		return name;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+	
+	public List<Client> getClients() {
+		return clients;
+	}
+	
+	public List<Bus> getBuses() {
+		return buses;
+	}
+	
+	public Route getRoute() {
+		return route;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
+	public void setBuses(List<Bus> buses) {
+		this.buses = buses;
+	}
+	
+	public void setRoute(Route route) {
+		this.route = route;
+	}
 }

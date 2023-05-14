@@ -22,7 +22,7 @@ public class ClientREST {
 	ClientEJB clientEJB;
 	
 	public ClientREST() {
-		this.clientEJB = new ClientEJB();
+		clientEJB = new ClientEJB();
 	}
 	
 	@GET
@@ -33,14 +33,18 @@ public class ClientREST {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path(value="/createClient")
-	public String createClient(Client client) {
+	public void createClient(Client client) {
+		if(client.getId() != null) {
+			throw new IllegalArgumentException();
+		}
 		clientEJB.createClient(client);
-		return "a";
 	}
 	
 	@PUT
 	public void updateClient(Client client) {
+		if(client.getId() == null) {
+			throw new IllegalArgumentException();
+		}
 		clientEJB.updateClient(client);
 	}
 	
