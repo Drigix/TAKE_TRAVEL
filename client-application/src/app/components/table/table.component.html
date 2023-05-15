@@ -15,7 +15,7 @@
         <div class="caption">
           <span class="p-input-icon-left search-input">
             <i class="pi pi-search" style="margin: 0.8rem"></i>
-            <input type="text" pInputText placeholder="{{ 'global.menu.search' | translate }}"
+            <input type="text" pInputText placeholder="Szukaj"
               (input)="filterGlobal($any($event.target).value)" [disabled]="!storagedData || storagedData.length === 0">
           </span>
         </div>

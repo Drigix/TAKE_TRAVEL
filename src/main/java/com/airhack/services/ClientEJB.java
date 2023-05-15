@@ -1,6 +1,7 @@
 package com.airhack.services;
 
 import java.util.List;
+import java.util.Date;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,11 +13,15 @@ import javax.persistence.Query;
 
 import com.airhack.models.Client;
 
+import lombok.extern.java.Log;
+
 @Stateless
 public class ClientEJB {
 	
 	@PersistenceContext(name="client")
 	EntityManager manager;
+	
+	EntityTransaction transaction;
 	
 	public ClientEJB() {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BookPu");
@@ -31,22 +36,30 @@ public class ClientEJB {
 	}
 	
 	public void createClient(Client client) {
-		EntityTransaction transaction = manager.getTransaction();
-    	transaction.begin();
+		this.beginTransaction();
 		manager.persist(client);
-		transaction.commit();
-    	manager.close();
+		this.closeTransaction();
 	}
 	
 	public void updateClient(Client client) {
+		this.beginTransaction();
 		manager.merge(client);
+		this.closeTransaction();
 	}
 	
 	public void deleteClient(Integer id) {
-		EntityTransaction transaction = manager.getTransaction();
-    	transaction.begin();
+		this.beginTransaction();
 		Client client = manager.find(Client.class, id);
 		manager.remove(client);
+		this.closeTransaction();
+	}
+	
+	private void beginTransaction() {
+		transaction = manager.getTransaction();
+    	transaction.begin();
+	}
+	
+	private void closeTransaction() {
 		transaction.commit();
     	manager.close();
 	}

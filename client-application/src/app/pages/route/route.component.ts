@@ -70,7 +70,7 @@ export class RoutesComponent implements OnInit {
       height: '60%',
       data: {
         edit: edit,
-        client: this.selectedRoute
+        route: this.selectedRoute
       }
     });
     ref.onClose.subscribe((response) => this.handleRouteDialog(response));
@@ -82,16 +82,16 @@ export class RoutesComponent implements OnInit {
 
   handleRouteDeleteDialog(response: boolean): void {
     if(response) {
-      this.routeService.delete(this.selectedRoute?.routeId!).subscribe(
+      this.routeService.delete(this.selectedRoute?.id!).subscribe(
         {
           next: () => {
             this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-              detail: 'usunięto!'});
+              detail: 'Pomyślnie usunięto trasę!'});
             this.loadRoutes();
           },
           error: () => {
             this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
-             detail: 'nie usunięto!'});
+             detail: 'Nie udało sie usunąć trasy!'});
           }
         }
       )

@@ -44,12 +44,12 @@ export class RouteDialogComponent implements OnInit {
       {
         next: (response) => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-                detail: 'edytowano!'});
-          this.ref.close(response);
+                detail: 'Pomyślnie edytowano trase!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie edytowano!'});
+                detail: 'Edycja trasy nie powiodła się!'});
         }
       }
     )
@@ -60,12 +60,12 @@ export class RouteDialogComponent implements OnInit {
       {
         next: (response) => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-                detail: 'utworzono!'});
-          this.ref.close(response);
+                detail: 'Pomyślnie dodano trase!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie utworzono!'});
+                detail: 'Dodanie trasy nie powiodło się!'});
         }
       }
     )

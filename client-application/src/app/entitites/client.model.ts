@@ -1,27 +1,47 @@
 import { Address } from "./address.model";
 
 interface IClient {
-  clientId?: number;
+  id?: number;
   email?: string;
-  name?: string;
-  surname?: string;
-  address?: Address;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
   birthDate?: string;
   pesel?: string;
   phoneNumber?: string;
-  gender?: string;
+}
+
+interface IClientRequest {
+  id?: number;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  birthDate?: string;
+  pesel?: string;
+  phoneNumber?: string;
 }
 
 export class Client implements IClient {
   constructor(
-  public clientId?: number,
+  public id?: number,
   public email?: string,
-  public name?: string,
-  public surname?: string,
-  public address?: Address,
+  public firstName?: string,
+  public lastName?: string,
+  public fullName?: string,
   public birthDate?: string,
   public pesel?: string,
   public phoneNumber?: string,
-  public gender?: string
+  ) {}
+}
+
+export class ClientRequest implements IClientRequest {
+  constructor(
+  public id?: number,
+  public email?: string,
+  public firstName?: string,
+  public lastName?: string,
+  public birthDate?: string,
+  public pesel?: string,
+  public phoneNumber?: string,
   ) {}
 }

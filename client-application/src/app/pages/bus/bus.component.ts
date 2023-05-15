@@ -77,7 +77,9 @@ export class BusComponent implements OnInit {
    }
 
    handleBussDialog(response: any): void {
-      console.log(response);
+      if(response) {
+        this.loadBuses();
+      }
    }
 
    handleBussDeleteDialog(response: boolean): void {
@@ -85,13 +87,13 @@ export class BusComponent implements OnInit {
       this.busService.delete(this.selectedBus?.id!).subscribe(
         {
           next: () => {
-            this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-              detail: 'usunięto!'});
+            this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
+              detail: 'Pomyślnie usunięto autobus!'});
             this.loadBuses();
           },
           error: () => {
-            this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
-              detail: 'nie usunięto!'});
+            this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+              detail: 'Nie udało sie usunąć autobusu!'});
           }
         }
       )

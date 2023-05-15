@@ -802,3 +802,7 @@ p-component-overlay-enter {
 .p-calendar .p-inputtext {
   width: 230px !important;
 }
+
+.p-multiselect-panel .p-multiselect-header .p-checkbox input {
+  display: none;
+}

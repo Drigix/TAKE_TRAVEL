@@ -9,7 +9,7 @@ export class MenuService {
 
   getMenuItems(): IMenuItem[] {
     const items: IMenuItem[] = [
-      this.createMenuItem('fa fa-home', 'Główna', '/', []),
+      //this.createMenuItem('fa fa-home', 'Główna', '/', []),
       this.createMenuItem('fa fa-bus', 'Autobusy', 'bus', []),
       this.createMenuItem('fa fa-users', 'Klienci', 'clients', []),
       this.createMenuItem('fa fa-location-arrow', 'Trasy', 'route', []),

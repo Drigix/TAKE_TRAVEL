@@ -68,7 +68,7 @@ export class TravelComponent implements OnInit {
       height: '60%',
       data: {
         edit: edit,
-        client: this.selectedTravel
+        travel: this.selectedTravel
       }
     });
     ref.onClose.subscribe((response) => this.handleTravelDialog(response));
@@ -83,13 +83,13 @@ export class TravelComponent implements OnInit {
       this.routeService.delete(this.selectedTravel?.id!).subscribe(
         {
           next: () => {
-            this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-              detail: 'usunięto!'});
+            this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
+              detail: 'Pomyślnie usunięto przewóz!'});
             this.loadTravels();
           },
           error: () => {
-            this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
-             detail: 'nie usunięto!'});
+            this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+             detail: 'Nie udało sie usunąć przewozu!'});
           }
         }
       )

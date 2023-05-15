@@ -1,15 +1,8 @@
 interface IBus {
   id?: number;
   name?: string;
-  surname?: string;
-  email?: string;
-  phoneNumber?: string;
-  birthDate?: string;
-  gender?: string;
-  pesel?: string;
-  addressId?: number;
-  targetObjectId?: number;
-  roleId?: number;
+  registrationNumber?: string;
+  places?: string;
 }
 
 interface IBusPassword {
@@ -21,15 +14,8 @@ export class Bus implements IBus {
   constructor(
    public id?: number,
    public name?: string,
-   public surname?: string,
-   public email?: string,
-   public birthDate?: string,
-   public phoneNumber?: string,
-   public gender?: string,
-   public pesel?: string,
-   public addressId?: number,
-   public targetObjectId?: number,
-   public roleId?: number
+   public registrationNumber?: string,
+   public places?: string
   ) {}
 }
 

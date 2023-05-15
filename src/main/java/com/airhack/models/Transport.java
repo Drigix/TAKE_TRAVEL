@@ -7,9 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,12 +30,13 @@ public class Transport {
 	private String name;
 	
 	@Column(name="date")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Warsaw")
 	private Date date;
 		
-	@OneToMany
+	@ManyToMany
 	private List<Client> clients;
 	
-	@OneToMany
+	@ManyToMany
 	private List<Bus> buses;
 	
 	@OneToOne

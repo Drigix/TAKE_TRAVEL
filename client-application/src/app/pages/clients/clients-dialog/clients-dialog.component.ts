@@ -18,7 +18,9 @@ export class ClientsDialogComponent implements OnInit {
     name: ['', Validators.required],
     surname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]{11}")]]
+    birthDay: ['', Validators.required],
+    phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]{11}")]],
+    pesel: ['', Validators.required]
   });
 
   client: Client = new Client();
@@ -39,42 +41,39 @@ export class ClientsDialogComponent implements OnInit {
     this.edit = this.config.data.edit;
     if(this.edit) {
       this.client = this.config.data.client;
-      this.address = this.client.address!;
       this.clientBirthDate = new Date(this.client.birthDate!);
     }
   }
 
   onEditClient(): void {
-    this.client.address = this.address;
     this.client.birthDate = this.changeDateService.changeDateToString(this.clientBirthDate!);
     this.clientService.update(this.client).subscribe(
       {
         next: (response) => {
-          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces',
-                detail: 'edytowano!'});
-          this.ref.close(response);
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
+                detail: 'Pomyślnie edytowano klienta!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie edytowano!'});
+                detail: 'Edycja klienta nie powiodła się!'});
         }
       }
     )
   }
 
   onCreateClient(): void {
-    this.client.address = this.address;
     this.client.birthDate = this.changeDateService.changeDateToString(this.clientBirthDate!);
     this.clientService.create(this.client).subscribe(
       {
         next: (response) => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-                detail: 'utworzono!'});
-          this.ref.close(response);
+                detail: 'Pomyślnie dodano klienta!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie utworzono!'});
+                detail: 'Dodanie klienta nie powiodło się!'});
         }
       }
     )

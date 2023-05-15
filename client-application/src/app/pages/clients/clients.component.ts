@@ -87,16 +87,16 @@ export class ClientsComponent implements OnInit {
 
    handleClientDeleteDialog(response: boolean): void {
       if(response) {
-        this.clientService.delete(this.selectedClient?.clientId!).subscribe(
+        this.clientService.delete(this.selectedClient?.id!).subscribe(
           {
             next: () => {
               this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Success',
-                detail: 'usunięto!'});
+                detail: 'Pomyślnie usunięto klienta!'});
               this.loadClients();
             },
             error: () => {
               this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Error',
-               detail: 'nie usunięto!'});
+               detail: 'Nie udało sie usunąć klienta!'});
             }
           }
         )

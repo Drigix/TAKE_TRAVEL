@@ -23,14 +23,10 @@ export class TravelDialogComponent implements OnInit {
 
   travelForm = this.fb.group({
     name: ['', Validators.required],
-    surname: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    birthDay: ['', [Validators.required]],
-    phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]{11}")]],
-    city: ['', Validators.required],
-    postalCode: ['', Validators.required],
-    street: ['', Validators.required],
-    streetNumber: ['', Validators.required]
+    date: ['', [Validators.required]],
+    clients: ['', Validators.required],
+    buses: ['', Validators.required],
+    route: ['', Validators.required]
   });
 
   travel: Travel = new Travel();
@@ -58,6 +54,10 @@ export class TravelDialogComponent implements OnInit {
     this.edit = this.config.data.edit;
     if(this.edit) {
       this.travel = this.config.data.travel;
+      this.date = new Date(this.travel.date!);
+      this.selectedClients = this.travel.clients!;
+      this.selectedClients.map( (client) => client.fullName = client.firstName + ' ' + client.lastName);
+      this.selectedBuses = this.travel.buses!;
     }
     this.loadClients();
     this.loadBuses();
@@ -68,6 +68,9 @@ export class TravelDialogComponent implements OnInit {
     this.clientService.getAll().subscribe(
       (res: HttpResponse<Client[]>) => {
         this.clients = res.body ?? [];
+        this.clients.forEach(client => {
+          client.fullName = client.firstName + ' ' + client.lastName;
+        });
       }
     )
    }
@@ -88,36 +91,49 @@ export class TravelDialogComponent implements OnInit {
     )
   }
 
+  resetFullNames(): Client[] {
+    for(var client of this.selectedClients) {
+      client.fullName = undefined;
+    }
+    return this.selectedClients;
+  }
+
   onEditTravel(): void {
+    this.travel.date = this.changeDateService.changeDateToString(this.date!);
+    this.travel.clients = this.resetFullNames();
+    this.travel.buses = this.selectedBuses;
     this.travelService.update(this.travel).subscribe(
       {
         next: (response) => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-                detail: 'edytowano!'});
-          this.ref.close(response);
+                detail: 'Pomyślnie edytowano przewóz!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie edytowano!'});
+                detail: 'Edycja przewozu nie powiodła się!'});
         }
       }
     )
   }
 
   onCreateTravel(): void {
+    this.travel.date = this.changeDateService.changeDateToString(this.date!);
+    this.travel.clients = this.resetFullNames();
+    this.travel.buses = this.selectedBuses;
     this.travelService.create(this.travel).subscribe(
       {
         next: (response) => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-                detail: 'utworzono!'});
-          this.ref.close(response);
+                detail: 'Pomyślnie dodano przewóz!'});
+          this.ref.close(true);
         },
         error: (error) => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-                detail: 'nie utworzono!'});
+                detail: 'Dodanie przewozu nie powiodło się!'});
         }
       }
-    )
+    );
   }
 
   onCloseDialog(): void {

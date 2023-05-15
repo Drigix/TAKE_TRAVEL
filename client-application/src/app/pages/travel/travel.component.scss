@@ -1,5 +1,9 @@
-:host ::ng-deep .p-multiselect-panel .p-multiselect-header .p-checkbox {
-  display: none;
+:host ::ng-deep .p-multiselect-panel .p-multiselect-header {
+  background-color: red;
+}
+
+:host ::ng-deep .p-checkbox {
+  display: none !important;
 }
 
 :host ::ng-deep .p-dropdown {

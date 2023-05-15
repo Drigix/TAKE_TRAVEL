@@ -19,15 +19,8 @@ import { TokenInterceptor } from './config/token-interceptor.service';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-const TRANSLATION_FILES = [
-  'global'
-];
-
-export function HttpLoaderFactory(http: HttpClient, backend: HttpBackend) {
-  const translationResources = TRANSLATION_FILES.map(file => ({
-    prefix: `../assets/i18n/pl/${file}`,
-    suffix: '.json'
-  }));
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
 }
 
 @NgModule({

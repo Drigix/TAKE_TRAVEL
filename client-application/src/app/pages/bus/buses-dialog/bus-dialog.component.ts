@@ -46,11 +46,12 @@ export class BussDialogComponent implements OnInit {
       {
         next: () => {
           this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
-              detail: 'utworzono!'});
+              detail: 'Pomyślnie dodano autobus!'});
+          this.ref.close(true);
         },
         error: () => {
           this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
-              detail: 'nie utworzono!'});
+              detail: 'Dodanie autobusu nie powiodło się!'});
         }
       }
     );
@@ -60,14 +61,16 @@ export class BussDialogComponent implements OnInit {
     this.busService.edit(this.bus).subscribe(
       {
         next: () => {
-          console.log('edytowano');
+          this.messageService.add({key: 'mainToast', severity: 'success', summary: 'Sukces!',
+            detail: 'Pomyślnie edytowano autobus!'});
+          this.ref.close(true);
         },
         error: (error) => {
-          console.log(error);
+          this.messageService.add({key: 'mainToast', severity: 'error', summary: 'Błąd!',
+            detail: 'Edycja autobusu nie powiodła się!'});
         }
       }
     );
-      this.ref.close();
   }
 
   onCloseDialog(): void {

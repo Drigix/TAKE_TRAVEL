@@ -1,5 +1,5 @@
 interface ITravelRoute {
-  routeId?: number;
+  id?: number;
   name?: string;
   startingPoint?: string;
   endingPoint?: string;
@@ -8,10 +8,10 @@ interface ITravelRoute {
 
 export class TravelRoute implements ITravelRoute {
   constructor(
-    public routeId?: number,
+    public id?: number,
     public name?: string,
     public startingPoint?: string,
-    public endingPoint?: string,
+    public endPoint?: string,
     public distance?: number
   ) {}
 }

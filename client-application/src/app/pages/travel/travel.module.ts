@@ -9,6 +9,7 @@ import { TravelDialogComponent } from './travel-dialog/travel-dialog.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ReactiveFormsModule,
     MultiSelectModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    CalendarModule
   ],
   exports: [
     TravelComponent,
